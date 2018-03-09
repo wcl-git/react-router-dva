@@ -1,0 +1,30 @@
+1、设为 flex布局后，子元素的 float、clear 和 vertical-align 属性无效
+
+六大属性
+
+flex-direaction 属性决定主轴的方向 
+
+    四个值： row (默认) 水平方向起点在左端
+            row-reverse 水平方向，起点在右端
+            column： 垂直方向，起点在上沿
+            column-reverse 垂直方向，起点在下沿
+
+
+flex-wrap 
+    默认情况下，项目都排在一条线上，flex-wrap 属性定义，如果一条线排布下，如何换行。
+
+    nowrap （默认）不换行
+    wrap 换行 第一行在上方
+    wrap-reverse: 换行，第一行在下方
+
+
+flex-flow  : flex-direaction 和 flex-wrap 的简写， 默认值：row nowrap 
+
+    flex-flow: <flex-direaction> || <flex-wrap>
+
+
+justify-content 属性 定义项目主轴上的对齐方式。
+
+    flex-start | flex-end | center | space=between | space-around 
+    左对齐 | 有对齐 | 居中|  两端对齐，项目间间隔都相等 | 每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍
+

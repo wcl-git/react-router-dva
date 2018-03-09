@@ -1,0 +1,20 @@
+react 路由跳转时，没有跳到顶部：
+    scrollTo（）把内容滚动到指定的坐标
+    element.scrollIntoView（） 把元素置顶
+
+方案 ：
+    只保证页面顶部：
+    componentDidMount() {
+    window.scrollTo(0, 0)
+  }
+
+  指定某一个为顶部 
+
+  class MyComponent extends Component {
+        componentDidMount() {
+            this.node.scrollIntoView();
+        }
+        render() {
+            return <div ref={node => this.node = node} />
+        }
+    }

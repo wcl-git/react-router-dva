@@ -1,0 +1,88 @@
+NPM : 允许用户从NPM服务器下载别人编写的三方包到本地使用。
+允许用户从NPM 服务器下载并安装别人编写的命令行到本地使用。
+将自己编写的包或命令行上传到NPM 服务器工别人使用
+
+npm 下载指定版本 npm install @<version>
+
+package.json
+
+main: 入口文件
+name： 项目名字
+
+文件copy
+小文件拷贝， 一次性拷贝完毕
+
+var fs = require('fs')
+
+function copy(src, dst) {
+    fs.writeFileSync(dst, fs.readFileSync(src))
+}
+
+function main (argv) {
+  copy(argv[0], argv[1])
+}
+
+main(process.argv.slice(2))
+
+
+readFileSync: 读取文件内容
+
+writeFileSync： 将文件内容写入目标路径
+
+process 是一个全局变量，可以通过process.argv 获取命令行参数。
+由于argv[0]固定等于NodeJS执行程序的绝对路径，argv[1]固定等于主要模块的绝对路径，
+因此第一个命令行参数从argv[2]这个位置开始。
+
+大文件拷贝 边度边拷
+
+var fs = require('fs')
+
+function copy(src, dst) {
+  fs.createReadStream(src).pipe(fs.createWriteStream(dst))
+}
+
+function main(argv) {
+  copy(argv[0], argv[1])
+}
+
+main(process.argv.slice(2))
+
+以上程序使用 fs.createReadStream 创建一个源文件的只读数据流，
+并使用fs.createWriteStream创建了一个目标文件只写数据流，
+并且用pipe方法把两个数据流链接了起来。
+这样就像水管边流边处理
+
+二进制数据流
+buffer 如果要拷贝 buffer 首先创建一个新的 buffer，并通过。copy方法把原 buffer 中的数据复制过去。
+buffer 的 slice 和 字符串 的slice 不一样。
+
+
+Stream 数据流  
+
+边读边写这类似操作， 如大文件复制
+
+
+path
+
+HTTP
+
+用途： 作为服务器端，穿件HTTP服务器，监听HTTP端口并返回响应。
+作为客户端使用，发起一个HTTP请求，获取服务器端响应
+
+创建一个服务器
+
+var http = require('http')
+http.createServer(function(request, response) {
+  var body = [];
+  console.log(request.method)
+  console.log(request.headers)
+
+  request.on('data', function(chunk){
+    body.push(chunk)
+  })
+
+  request.on('end', function() {
+    body = Buffer.concat(body)
+    console.loh(body.toString())
+  })
+}).listen(80)

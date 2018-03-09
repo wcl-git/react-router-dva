@@ -1,0 +1,14 @@
+三步： 
+建立 canvas 标签
+获取 canvas 标签
+对获取的标签创建‘2d’画笔 canvas.getContext('2d')
+
+
+移动画笔 moveTo(100, 100) 坐标
+画笔停点 lineTo(100,100) 坐标 上一笔的停止点
+context.lineWidth = 5 这句话意思是设置画笔线条的粗细为 5 px
+context.strokeStyle = "#AA394C" 设置画笔线条的颜色为玫瑰红。
+
+绘制两种方法
+
+fill()  stroke()  前者是指填充，后者是指描边。
