@@ -1,0 +1,6 @@
+所谓高阶组件：接受简单 React 组件为参数，并返回一个新组件的函数。
+
+example： const composeHOC = hoc(BaseComponent)
+
+
+withProps: 新创建的 props 和 原来的 props 合并在一起， 一起床第给基础组件。
